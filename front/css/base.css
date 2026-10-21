@@ -14,3 +14,13 @@
 @media(max-width:360px){.screen{padding-right:14px;padding-left:14px}.content-header{margin-right:-14px;margin-left:-14px;padding-right:14px;padding-left:14px}.auth-brand{margin-top:5px;margin-bottom:16px}.auth-heading{margin-bottom:22px}}
 body.dark-preview{background:#10151d;color-scheme:dark}body.dark-preview .device{--ink:#f0f2f5;--muted:#abb4c0;--line:#39414c;--surface:#1c242f;background:#1c242f;color:#f0f2f5}body.dark-preview .status-bar,body.dark-preview .online-strip,body.dark-preview .screen,body.dark-preview .content-header,body.dark-preview .map-topbar{background-color:#1c242f;color:#f0f2f5}body.dark-preview .wordmark,body.dark-preview .mini-brand,body.dark-preview .map-fab small,body.dark-preview .field-label,body.dark-preview .auth-heading h1,body.dark-preview .sheet-heading,body.dark-preview .occurrence-copy strong,body.dark-preview .settings-body h1,body.dark-preview .faq-body h1,body.dark-preview .faq-question-copy strong{color:#f0f2f5}body.dark-preview .input-wrap,body.dark-preview .occurrence-card,body.dark-preview .faq-item,body.dark-preview .setting-row,body.dark-preview .chat-compose input,body.dark-preview .back-button{border-color:#39414c;background:#252e3a;color:#f0f2f5}body.dark-preview .soft-button,body.dark-preview .bot-card,body.dark-preview .bot-card>strong,body.dark-preview .quick-prompt,body.dark-preview .faq-question,body.dark-preview .emergency-channel{background-color:#252e3a;color:#f0f2f5}body.dark-preview .map-sheet{background:#1c242f}
 
+
+/* Preferências e foco compartilhados por todas as páginas. */
+body.high-contrast{--ink:#080b0f;--muted:#303640;--line:#757d88}
+body.high-contrast .screen :is(p,small,label,input){color:#111!important}
+body.high-contrast .input-wrap{border-color:#555}
+body.text-small .screen{zoom:.92}
+body.text-large .screen{zoom:1.08}
+body.reduce-motion *,body.reduce-motion *::before,body.reduce-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+body .input-wrap input:focus-visible,body .chat-compose input:focus-visible{outline:3px solid #287abf;outline-offset:2px}

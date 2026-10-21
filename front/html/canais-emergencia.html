@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Canais de emergência: SAMU, Polícia Militar, Bombeiros e Defesa Civil.">
+    <title>Canais de Emergência — Alertaê</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/canais-emergencia.css">
+    <script defer src="../js/aplicacao.js"></script>
+  </head>
+  <body>
+    <main class="device" id="app">
+      <div class="status-bar" aria-label="Barra de status">
+        <span>9:41</span>
+        <div class="status-icons" aria-hidden="true"><i>▮▮▮</i><i>◕</i><i class="battery"></i></div>
+      </div>
+      <div class="online-strip"><span class="online-dot"></span><span>Protótipo demonstrativo</span></div>
+      <section class="screen active content-screen" aria-labelledby="channels-title">
+        <header class="content-header">
+          <button class="back-button" type="button" data-screen="sos" aria-label="Voltar ao SOS">‹</button>
+          <div class="header-title">Canais de Emergência</div>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </header>
+        <div class="channels-content">
+          <h1 id="channels-title">De qual ajuda você precisa?</h1>
+          <p>Escolha o serviço para entrar em contato.</p>
+          <nav class="channels-list" aria-label="Serviços de emergência">
+            <a class="channel-card" href="samu.html">
+              <span class="category-icon green" aria-hidden="true">+</span>
+              <span class="channel-copy"><strong>SAMU</strong><small>Urgências e emergências médicas</small><span class="channel-action">Ver atendimento ›</span></span>
+              <span class="channel-number">192</span>
+            </a>
+            <a class="channel-card" href="tel:193" aria-label="Ligar para o Corpo de Bombeiros, 193">
+              <span class="category-icon red" aria-hidden="true">!</span>
+              <span class="channel-copy"><strong>Corpo de Bombeiros</strong><small>Incêndios, resgates e salvamentos</small><span class="channel-action">Ligar ›</span></span>
+              <span class="channel-number">193</span>
+            </a>
+            <a class="channel-card" href="tel:190" aria-label="Ligar para a Polícia Militar, 190">
+              <span class="category-icon blue" aria-hidden="true">★</span>
+              <span class="channel-copy"><strong>Polícia Militar</strong><small>Crimes em andamento e risco à segurança</small><span class="channel-action">Ligar ›</span></span>
+              <span class="channel-number">190</span>
+            </a>
+            <a class="channel-card" href="tel:199" aria-label="Ligar para a Defesa Civil, 199">
+              <span class="category-icon amber" aria-hidden="true">!</span>
+              <span class="channel-copy"><strong>Defesa Civil</strong><small>Alagamentos, deslizamentos e riscos estruturais</small><span class="channel-action">Ligar ›</span></span>
+              <span class="channel-number">199</span>
+            </a>
+          </nav>
+          <p class="channels-notice">Os botões “Ligar” abrem o discador do aparelho com números reais de emergência.</p>
+          <a class="channels-source" href="https://www.ssp.df.gov.br/emergencia-190-193-e-199" target="_blank" rel="noopener noreferrer">Consultar telefones oficiais da SSP-DF ↗</a>
+        </div>
+      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>

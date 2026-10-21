@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
       <div class="online-strip">
         <span class="online-dot">
         </span>
-        <span>Sistema online</span>
+        <span>Protótipo demonstrativo</span>
       </div>
       <section class="screen active map-screen" id="screen-map" aria-label="Mapa de ocorrências">
         <header class="map-topbar">
@@ -36,31 +36,34 @@
         </header>
         <div class="map-canvas" aria-label="Mapa interativo com ocorrências">
           <div id="mapa-interativo" role="application" aria-label="Mapa de ruas e ocorrências"></div>
-          <div class="map-controls">
-            <button class="map-fab sos-fab" data-screen="sos">
+          <button class="locate-button" type="button" aria-label="Centralizar na minha localização atual" title="Minha localização">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
+          </button>
+          <nav class="map-controls" aria-label="Ações do mapa">
+            <button class="map-fab sos-fab" type="button" data-screen="sos">
               <i aria-hidden="true">!</i>
               <small>SOS</small>
             </button>
-            <button class="map-fab alert-fab" data-action="alerts">
-              <i aria-hidden="true">♧</i>
+            <button class="map-fab alert-fab" type="button" data-action="alerts" aria-controls="occurrences-sheet" aria-expanded="false" aria-pressed="false">
+              <i aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></i>
               <small>Alertas</small>
             </button>
-            <button class="map-fab chat-fab" data-screen="chat">
+            <button class="map-fab chat-fab" type="button" data-screen="chat">
               <i aria-hidden="true">•••</i>
-              <small>Chatbot</small>
+              <small>Ajuda</small>
             </button>
-            <button class="map-fab settings-fab" data-screen="settings">
+            <button class="map-fab settings-fab" type="button" data-screen="settings">
               <i aria-hidden="true">⚙</i>
               <small>Config.</small>
             </button>
-          </div>
-          <button class="locate-button" aria-label="Centralizar mapa">◎</button>
+          </nav>
         </div>
-        <div class="map-sheet" id="occurrences-sheet">
+        <div class="map-sheet" id="occurrences-sheet" hidden>
           <button class="sheet-handle" type="button" data-action="toggle-sheet" aria-label="Arraste para ver as últimas notificações" aria-expanded="false"><span></span></button>
           <div class="sheet-heading" data-action="toggle-sheet">
             <strong>Últimas notificações</strong>
             <button class="text-link" data-action="see-all">Ver todas⌃</button>
+            <button class="text-link" type="button" data-action="dismiss-alerts" aria-label="Fechar alertas">Fechar</button>
           </div>
           <div class="occurrence-list" id="occurrence-list">
           </div>
@@ -71,11 +74,11 @@
       <div class="modal-backdrop" id="modal-backdrop" hidden>
         <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <span class="modal-emblem">!</span>
-          <h2 id="modal-title">Pedir ajuda agora?</h2>
-          <p>Sua localização será compartilhada com a central de atendimento.</p>
+          <h2 id="modal-title">Simular pedido de ajuda?</h2>
+          <p>Esta é uma demonstração. Nenhum pedido ou localização será enviado a uma central.</p>
           <div class="modal-actions">
             <button class="soft-button" data-close-modal>Cancelar</button>
-            <button class="primary-button" id="confirm-sos">Confirmar SOS</button>
+            <button class="primary-button" id="confirm-sos">Simular SOS</button>
           </div>
         </div>
       </div>

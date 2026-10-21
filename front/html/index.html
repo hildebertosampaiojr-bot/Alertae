@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/login.css">
-    <script defer src="../js/aplicacao.js"></script>
+    <link rel="stylesheet" href="../css/base.css?v=20261021-acesso">
+    <link rel="stylesheet" href="../css/login.css?v=20261021-acesso">
+    <script defer src="../js/aplicacao.js?v=20261021-acesso"></script>
   </head>
   <body>
     <main class="device" id="app">
@@ -35,7 +35,7 @@
           <h1>Bem-vindo ao Alertaê</h1>
           <p>Acesso demonstrativo, sem autenticação real</p>
         </div>
-        <form class="form-stack" id="login-form">
+        <form class="form-stack" id="login-form" action="mapa.html" method="get">
           <label class="field-label" for="login-email">E-mail</label>
           <div class="input-wrap">
             <span aria-hidden="true">✉</span>
@@ -47,13 +47,13 @@
             <input id="login-password" type="password" placeholder="Senha" autocomplete="current-password" required>
             <button class="input-action" type="button" data-toggle-password="login-password" aria-label="Mostrar senha">◉</button>
           </div>
-          <button class="text-link forgot-link" type="button" data-screen="forgot">Esqueci minha senha?</button>
+          <a class="text-link forgot-link" href="recuperar-senha.html">Esqueci minha senha?</a>
           <button class="primary-button" type="submit">Entrar</button>
         </form>
         <div class="or-separator">
           <span>ou</span>
         </div>
-        <button class="soft-button full-button" type="button" data-screen="signup">Criar conta</button>
+        <a class="soft-button full-button auth-navigation" href="cadastro.html">Criar conta</a>
       </section>
       <div class="toast" id="toast" role="status" aria-live="polite">
       </div>

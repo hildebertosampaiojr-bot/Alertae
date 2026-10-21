@@ -304,7 +304,7 @@ function showToast(message) {
 }
 
 function navigate(screen) {
-  if (Object.hasOwn(pages, screen)) window.location.assign(pages[screen]);
+  if (Object.prototype.hasOwnProperty.call(pages, screen)) window.location.assign(pages[screen]);
 }
 
 function textElement(tag, text, className) {
@@ -389,7 +389,7 @@ function renderSettings() {
   const styleSelect = document.querySelector("[data-default-map-style]");
   let style;
   try { style = localStorage.getItem(MAP_STYLE_KEY); } catch { /* Usa o estilo padrão. */ }
-  if (styleSelect) styleSelect.value = Object.hasOwn(mapStyles, style) ? style : "claro";
+  if (styleSelect) styleSelect.value = Object.prototype.hasOwnProperty.call(mapStyles, style) ? style : "claro";
   const autoLocation = document.querySelector("[data-auto-location]");
   if (autoLocation) autoLocation.checked = readStored("alertae-map-preferences").autoLocation !== false;
 }
@@ -503,7 +503,7 @@ function initializeApplication() {
   document.addEventListener("change", event => {
     const input = event.target;
     if (input.hasAttribute("data-default-map-style")) {
-      if (!Object.hasOwn(mapStyles, input.value)) return;
+      if (!Object.prototype.hasOwnProperty.call(mapStyles, input.value)) return;
       try {
         localStorage.setItem(MAP_STYLE_KEY, input.value);
         showToast("Estilo do mapa salvo. Será aplicado ao abrir o mapa.");
@@ -908,7 +908,7 @@ function initializeMap() {
   try { savedStyle = localStorage.getItem(MAP_STYLE_KEY); } catch { /* Usa o estilo padrão. */ }
 
   const initialStyle =
-    Object.hasOwn(mapStyles, savedStyle) ? savedStyle : "claro";
+    Object.prototype.hasOwnProperty.call(mapStyles, savedStyle) ? savedStyle : "claro";
 
   // Aplica o estilo
   changeMapStyle(initialStyle);

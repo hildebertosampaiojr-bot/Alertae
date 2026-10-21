@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Alertaê: alertas, ocorrências e ajuda em tempo real na sua cidade.">
+    <title>Alertaê — segurança em tempo real</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/configuracoes.css">
+    <script defer src="../js/aplicacao.js"></script>
+  </head>
+  <body>
+    <main class="device" id="app">
+      <div class="status-bar" aria-label="Barra de status">
+        <span>9:41</span>
+        <div class="status-icons" aria-hidden="true"><i>▮▮▮</i><i>◕</i><i class="battery"></i></div>
+      </div>
+      <div class="online-strip">
+        <span class="online-dot">
+        </span>
+        <span>Sistema online</span>
+      </div>
+      <section class="screen active content-screen" id="screen-settings" aria-label="Configurações">
+        <header class="content-header">
+          <button class="back-button" data-screen="map" aria-label="Voltar">‹</button>
+          <div class="header-spacer" aria-hidden="true"></div>
+          <button class="header-icon" data-action="signout" aria-label="Sair">↗</button>
+        </header>
+        <div class="settings-body">
+          <div class="faq-brand">
+            <span>📍</span>
+            <strong>ALERTAÊ</strong>
+          </div>
+          <h1>Configurações</h1>
+          <div class="settings-list" id="settings-list">
+          </div>
+          <button class="signout-button" data-action="signout">Sair da conta</button>
+          <p class="version-label">Alertaê • versão 1.0</p>
+        </div>
+      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite">
+      </div>
+      <div class="modal-backdrop" id="modal-backdrop" hidden>
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <span class="modal-emblem">!</span>
+          <h2 id="modal-title">Pedir ajuda agora?</h2>
+          <p>Sua localização será compartilhada com a central de atendimento.</p>
+          <div class="modal-actions">
+            <button class="soft-button" data-close-modal>Cancelar</button>
+            <button class="primary-button" id="confirm-sos">Confirmar SOS</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+
+
+

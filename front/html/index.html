@@ -1,0 +1,78 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Alertaê: alertas, ocorrências e ajuda em tempo real na sua cidade.">
+    <title>Alertaê — segurança em tempo real</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script defer src="../js/aplicacao.js"></script>
+  </head>
+  <body>
+    <main class="device" id="app">
+      <div class="status-bar" aria-label="Barra de status">
+        <span>9:41</span>
+        <div class="status-icons" aria-hidden="true"><i>▮▮▮</i><i>◕</i><i class="battery"></i></div>
+      </div>
+      <div class="online-strip">
+        <span class="online-dot">
+        </span>
+        <span>Sistema online</span>
+      </div>
+      <section class="screen active" id="screen-login" aria-label="Entrar">
+        <div class="auth-brand">
+          <span class="brand-pin" aria-hidden="true">📍</span>
+          <div class="wordmark">ALERTAÊ</div>
+          <div class="brand-underline">
+          </div>
+        </div>
+        <div class="auth-heading">
+          <h1>Bem-vindo ao Alertaê</h1>
+          <p>Entre para acompanhar sua cidade</p>
+        </div>
+        <form class="form-stack" id="login-form">
+          <label class="field-label" for="login-email">E-mail</label>
+          <div class="input-wrap">
+            <span aria-hidden="true">✉</span>
+            <input id="login-email" type="email" placeholder="E-mail" autocomplete="email" required>
+          </div>
+          <label class="field-label" for="login-password">Senha</label>
+          <div class="input-wrap">
+            <span aria-hidden="true">♙</span>
+            <input id="login-password" type="password" placeholder="Senha" autocomplete="current-password" required>
+            <button class="input-action" type="button" data-toggle-password="login-password" aria-label="Mostrar senha">◉</button>
+          </div>
+          <button class="text-link forgot-link" type="button" data-screen="forgot">Esqueci minha senha?</button>
+          <button class="primary-button" type="submit">Entrar</button>
+        </form>
+        <div class="or-separator">
+          <span>ou</span>
+        </div>
+        <button class="soft-button full-button" type="button" data-screen="signup">Criar conta</button>
+      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite">
+      </div>
+      <div class="modal-backdrop" id="modal-backdrop" hidden>
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <span class="modal-emblem">!</span>
+          <h2 id="modal-title">Pedir ajuda agora?</h2>
+          <p>Sua localização será compartilhada com a central de atendimento.</p>
+          <div class="modal-actions">
+            <button class="soft-button" data-close-modal>Cancelar</button>
+            <button class="primary-button" id="confirm-sos">Confirmar SOS</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+
+
+
+

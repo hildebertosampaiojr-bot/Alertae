@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Preferências da sua conta Alertaê.">
+    <title>Alertaê — preferências</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/preferencias-compartilhadas.css">
+    <link rel="stylesheet" href="../css/permissoes.css">
+    <script defer src="../js/aplicacao.js"></script>
+  </head>
+  <body>
+    <main class="device" id="app">
+      <div class="status-bar" aria-label="Barra de status">
+        <span>9:41</span>
+        <div class="status-icons" aria-hidden="true"><i>▮▮▮</i><i>◕</i><i class="battery"></i></div>
+      </div>
+      <div class="online-strip"><span class="online-dot"></span><span>Sistema online</span></div>
+      <section class="screen active content-screen" aria-label="Permissões">
+        <header class="content-header">
+          <button class="back-button" type="button" data-screen="settings" aria-label="Voltar às configurações">‹</button>
+          <div class="header-title">Permissões</div>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </header>
+        <div class="preferences-page">
+          <div class="faq-brand"><span>📍</span><strong>ALERTAÊ</strong></div>
+          <h1>Permissões</h1>
+          <p class="preferences-intro">Escolha quais recursos deseja manter ativos.</p>
+          <section class="preference-card preference-list">
+            <h2>Permissões do aplicativo</h2>
+            <p>Você pode alterar essas preferências quando quiser.</p>
+            <label class="preference-row"><div><strong>Localização</strong><small>Usada para mostrar ocorrências próximas e orientar pedidos de ajuda.</small></div><input type="checkbox" data-permission="location" checked><i></i></label>
+            <label class="preference-row"><div><strong>Notificações</strong><small>Receba avisos sobre ocorrências importantes na região.</small></div><input type="checkbox" data-permission="notifications" checked><i></i></label>
+          </section>
+          <p class="permissions-note">As opções são demonstrativas e não alteram as permissões do aparelho.</p>
+        </div>
+      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
+
+
+
+

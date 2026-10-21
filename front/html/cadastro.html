@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Alertaê: alertas, ocorrências e ajuda em tempo real na sua cidade.">
+    <title>Alertaê — segurança em tempo real</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <script defer src="../js/aplicacao.js"></script>
+  </head>
+  <body>
+    <main class="device" id="app">
+      <div class="status-bar" aria-label="Barra de status">
+        <span>9:41</span>
+        <div class="status-icons" aria-hidden="true"><i>▮▮▮</i><i>◕</i><i class="battery"></i></div>
+      </div>
+      <div class="online-strip">
+        <span class="online-dot">
+        </span>
+        <span>Sistema online</span>
+      </div>
+      <section class="screen active" id="screen-signup" aria-label="Criar conta">
+        <div class="auth-brand compact-brand">
+          <span class="brand-pin" aria-hidden="true">📍</span>
+          <div class="wordmark">ALERTAÊ</div>
+          <div class="brand-underline">
+          </div>
+        </div>
+        <div class="auth-heading">
+          <h1>Crie sua conta</h1>
+          <p>Receba alertas e contribua com a comunidade</p>
+        </div>
+        <form class="form-stack signup-form" id="signup-form">
+          <label class="field-label" for="signup-name">Nome completo</label>
+          <div class="input-wrap">
+            <span>♙</span>
+            <input id="signup-name" placeholder="Nome completo" autocomplete="name" required>
+          </div>
+          <label class="field-label" for="signup-email">E-mail</label>
+          <div class="input-wrap">
+            <span>✉</span>
+            <input id="signup-email" type="email" placeholder="E-mail" autocomplete="email" required>
+          </div>
+          <label class="field-label" for="signup-phone">Telefone</label>
+          <div class="input-wrap">
+            <span>⌕</span>
+            <input id="signup-phone" type="tel" placeholder="Telefone" autocomplete="tel">
+          </div>
+          <label class="field-label" for="signup-birth">Data de nascimento</label>
+          <div class="input-wrap">
+            <span>▦</span>
+            <input id="signup-birth" type="text" placeholder="DD/MM/AAAA" inputmode="numeric">
+          </div>
+          <label class="field-label" for="signup-password">Senha</label>
+          <div class="input-wrap">
+            <span>♙</span>
+            <input id="signup-password" type="password" placeholder="Senha" required minlength="6">
+            <button class="input-action" type="button" data-toggle-password="signup-password">◉</button>
+          </div>
+          <label class="field-label" for="signup-confirm">Confirmar senha</label>
+          <div class="input-wrap">
+            <span>♙</span>
+            <input id="signup-confirm" type="password" placeholder="Confirmar senha" required minlength="6">
+          </div>
+          <label class="switch-row"><div><span class="row-icon blue">♧</span>Permitir localização</div><input type="checkbox" checked><i></i></label>
+          <label class="switch-row"><div><span class="row-icon pink">♧</span>Receber notificações</div><input type="checkbox" checked><i></i></label>
+          <button class="primary-button" type="submit">Criar conta</button>
+        </form>
+        <p class="auth-footnote">Já tem uma conta? <button class="text-link" data-screen="login">Entrar</button>
+        </p>
+      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite">
+      </div>
+      <div class="modal-backdrop" id="modal-backdrop" hidden>
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <span class="modal-emblem">!</span>
+          <h2 id="modal-title">Pedir ajuda agora?</h2>
+          <p>Sua localização será compartilhada com a central de atendimento.</p>
+          <div class="modal-actions">
+            <button class="soft-button" data-close-modal>Cancelar</button>
+            <button class="primary-button" id="confirm-sos">Confirmar SOS</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+

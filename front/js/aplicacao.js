@@ -647,17 +647,18 @@ const mapStyles = {
   claro: {
     name: "Claro",
     url:
-      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     attribution:
-      '&copy; OpenStreetMap &copy; CARTO'
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   },
 
   escuro: {
     name: "Escuro",
     url:
-      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     attribution:
-      '&copy; OpenStreetMap &copy; CARTO'
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    className: "alertae-dark-tiles"
   },
 
   satelite: {
@@ -685,7 +686,7 @@ let hybridLabelsLayer = null;
 ======================================== */
 
 function changeMapStyle(style) {
-  if (!mapInstance || !mapStyles[style]) {
+  if (!mapInstance || !Object.prototype.hasOwnProperty.call(mapStyles, style)) {
     return;
   }
 
@@ -705,7 +706,8 @@ function changeMapStyle(style) {
   // Adiciona o novo mapa
   activeMapLayer = L.tileLayer(selected.url, {
     attribution: selected.attribution,
-    maxZoom: 19
+    maxZoom: 19,
+    className: selected.className || ""
   }).addTo(mapInstance);
 
   // Adiciona nomes de ruas e lugares ao satélite

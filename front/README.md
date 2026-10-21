@@ -28,3 +28,5 @@ As telas incluem navegação, validação de confirmação de senha, busca nas d
 
 Configurações reúne o resumo do perfil, permissões, acessibilidade, ajuda e canais de emergência. Em “Seu mapa”, é possível escolher o estilo padrão e desativar a centralização automática ao abrir; o botão de localização continua disponível para buscar a posição manualmente. As preferências são persistidas neste navegador. A seção de privacidade explica o armazenamento local e os limites do protótipo.
 
+As camadas Claro e Escuro usam imagens do OpenStreetMap; a opção Escuro aplica um filtro visual apenas nessas imagens. Satélite e Híbrido usam Esri. As camadas atuais não usam CARTO nem exigem chave CARTO. Mantenha os créditos visíveis e respeite a política do provedor: https://operations.osmfoundation.org/policies/tiles/.
+

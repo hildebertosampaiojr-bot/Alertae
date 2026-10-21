@@ -26,3 +26,6 @@
 .device:has(.map-screen.active)>.toast{bottom:calc(174px + env(safe-area-inset-bottom));right:14px;left:14px;border-radius:12px;background:#202c3bf2;pointer-events:none}
 @media(min-width:600px){.map-screen{inset:54px 0 0}}
 @media(max-width:360px){.map-controls{right:10px;left:10px;padding:9px 6px}.map-sheet{right:10px;left:10px}.map-topbar{padding:0 14px}}
+
+/* O filtro escuro afeta somente as imagens das ruas. */
+.alertae-dark-tiles .leaflet-tile{filter:invert(100%) hue-rotate(180deg) brightness(.9) contrast(.9)}

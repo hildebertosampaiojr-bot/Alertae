@@ -30,7 +30,19 @@ jobs:
         run: |
           mkdir -p _site
           cp -R front/. _site/
-          cp front/html/index.html _site/index.html
+          cat > _site/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="pt-BR">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=html/index.html">
+            <title>Alertê</title>
+          </head>
+          <body>
+            <a href="html/index.html">Abrir Alertê</a>
+          </body>
+          </html>
+          EOF
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
@@ -43,3 +55,4 @@ jobs:
       - name: Publicar site
         id: deployment
         uses: actions/deploy-pages@v4
+

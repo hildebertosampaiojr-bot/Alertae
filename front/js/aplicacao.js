@@ -1,6 +1,8 @@
-import { faqs, occurrences, pages } from "./dados.js";
-
 "use strict";
+
+let faqs;
+let occurrences;
+let pages;
 
 
 /* ========================================
@@ -191,7 +193,14 @@ function sendChat(message) {
   list.lastElementChild.scrollIntoView({ block: "nearest" });
 }
 
-function initializeApplication() {
+async function initializeApplication() {
+  try {
+    ({ faqs, occurrences, pages } = await import("./dados.js"));
+  } catch (error) {
+    console.error("Falha ao carregar os dados do protótipo.", error);
+    showToast("Não foi possível iniciar o protótipo. Recarregue a página.");
+    return;
+  }
   document.querySelectorAll(".online-strip span:last-child").forEach(label => { label.textContent = "Protótipo demonstrativo"; });
   applyPreferences();
   renderSettings();

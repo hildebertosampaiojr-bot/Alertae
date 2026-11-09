@@ -1,4 +1,8 @@
-﻿
+import { faqs, occurrences, pages } from "./dados.js";
+
+"use strict";
+
+
 /* ========================================
    MAPA E GEOLOCALIZAÇÃO AUTOMÁTICA
 ======================================== */
@@ -10,275 +14,6 @@ let sheetDragStart = null;
 let sheetWasDragged = false;
 let alertsVisible = false;
 
-// Todos os dados abaixo são fictícios. Não há autenticação ou envio de SOS.
-const occurrences = [
-  {
-    "id": "acidente",
-    "icon": "!",
-    "color": "red",
-    "title": "Acidente de trânsito (simulação)",
-    "address": "Eixo Monumental, Brasília - DF",
-    "time": "Agora",
-    "urgent": true,
-    "latitude": -15.7989,
-    "longitude": -47.8666
-  },
-  {
-    "id": "incendio",
-    "icon": "♨",
-    "color": "amber",
-    "title": "Incêndio (simulação)",
-    "address": "Asa Norte, Brasília - DF",
-    "time": "5 min",
-    "latitude": -15.762,
-    "longitude": -47.885
-  },
-  {
-    "id": "policial",
-    "icon": "★",
-    "color": "blue",
-    "title": "Ocorrência policial (simulação)",
-    "address": "Asa Sul, Brasília - DF",
-    "time": "8 min",
-    "latitude": -15.826,
-    "longitude": -47.91
-  },
-  {
-    "id": "medica",
-    "icon": "＋",
-    "color": "green",
-    "title": "Emergência médica (simulação)",
-    "address": "Taguatinga, DF",
-    "time": "12 min",
-    "latitude": -15.833,
-    "longitude": -48.056
-  },
-  {
-    "id": "alagamento",
-    "icon": "!",
-    "color": "red",
-    "title": "Alagamento (simulação)",
-    "address": "Águas Claras, DF",
-    "time": "15 min",
-    "latitude": -15.839,
-    "longitude": -48.027
-  },
-  {
-    "id": "risco",
-    "icon": "♧",
-    "color": "purple",
-    "title": "Área de risco (simulação)",
-    "address": "Ceilândia, DF",
-    "time": "18 min",
-    "latitude": -15.817,
-    "longitude": -48.108
-  },
-  {
-    "id": "colisao",
-    "icon": "!",
-    "color": "red",
-    "title": "Colisão entre veículos (simulação)",
-    "address": "Sudoeste, Brasília - DF",
-    "time": "20 min",
-    "latitude": -15.8,
-    "longitude": -47.928
-  },
-  {
-    "id": "arvore",
-    "icon": "♧",
-    "color": "amber",
-    "title": "Queda de árvore (simulação)",
-    "address": "Lago Norte, DF",
-    "time": "22 min",
-    "latitude": -15.731,
-    "longitude": -47.861
-  },
-  {
-    "id": "incendio2",
-    "icon": "♨",
-    "color": "red",
-    "title": "Incêndio residencial (simulação)",
-    "address": "Samambaia, DF",
-    "time": "25 min",
-    "latitude": -15.871,
-    "longitude": -48.085
-  },
-  {
-    "id": "interdicao",
-    "icon": "!",
-    "color": "amber",
-    "title": "Via interditada (simulação)",
-    "address": "Guará, DF",
-    "time": "28 min",
-    "latitude": -15.828,
-    "longitude": -47.979
-  },
-  {
-    "id": "medica2",
-    "icon": "＋",
-    "color": "green",
-    "title": "Atendimento de emergência (simulação)",
-    "address": "Gama, DF",
-    "time": "30 min",
-    "latitude": -16.018,
-    "longitude": -48.065
-  },
-  {
-    "id": "alagamento2",
-    "icon": "!",
-    "color": "red",
-    "title": "Ponto de alagamento (simulação)",
-    "address": "Vicente Pires, DF",
-    "time": "33 min",
-    "latitude": -15.808,
-    "longitude": -48.021
-  },
-  {
-    "id": "policial2",
-    "icon": "★",
-    "color": "blue",
-    "title": "Ocorrência de segurança (simulação)",
-    "address": "Sobradinho, DF",
-    "time": "35 min",
-    "latitude": -15.65,
-    "longitude": -47.791
-  },
-  {
-    "id": "moto",
-    "icon": "!",
-    "color": "red",
-    "title": "Acidente de motocicleta (simulação)",
-    "address": "Núcleo Bandeirante, DF",
-    "time": "38 min",
-    "latitude": -15.871,
-    "longitude": -47.968
-  },
-  {
-    "id": "deslizamento",
-    "icon": "♧",
-    "color": "purple",
-    "title": "Risco de deslizamento (simulação)",
-    "address": "Fercal, DF",
-    "time": "40 min",
-    "latitude": -15.605,
-    "longitude": -47.875
-  },
-  {
-    "id": "medica3",
-    "icon": "＋",
-    "color": "green",
-    "title": "Emergência médica (simulação)",
-    "address": "Planaltina, DF",
-    "time": "42 min",
-    "latitude": -15.621,
-    "longitude": -47.658
-  },
-  {
-    "id": "incendio3",
-    "icon": "♨",
-    "color": "amber",
-    "title": "Princípio de incêndio (simulação)",
-    "address": "Recanto das Emas, DF",
-    "time": "45 min",
-    "latitude": -15.914,
-    "longitude": -48.062
-  },
-  {
-    "id": "policial3",
-    "icon": "★",
-    "color": "blue",
-    "title": "Ocorrência policial (simulação)",
-    "address": "Santa Maria, DF",
-    "time": "48 min",
-    "latitude": -16.016,
-    "longitude": -48.012
-  },
-  {
-    "id": "alagamento3",
-    "icon": "!",
-    "color": "red",
-    "title": "Alagamento em via (simulação)",
-    "address": "Riacho Fundo I, DF",
-    "time": "50 min",
-    "latitude": -15.885,
-    "longitude": -48.017
-  },
-  {
-    "id": "acidente3",
-    "icon": "!",
-    "color": "red",
-    "title": "Acidente de trânsito (simulação)",
-    "address": "Paranoá, DF",
-    "time": "52 min",
-    "latitude": -15.775,
-    "longitude": -47.779
-  },
-  {
-    "id": "poste",
-    "icon": "!",
-    "color": "amber",
-    "title": "Queda de poste (simulação)",
-    "address": "Itapoã, DF",
-    "time": "55 min",
-    "latitude": -15.747,
-    "longitude": -47.77
-  },
-  {
-    "id": "policial4",
-    "icon": "★",
-    "color": "blue",
-    "title": "Ocorrência policial (simulação)",
-    "address": "Brazlândia, DF",
-    "time": "58 min",
-    "latitude": -15.68,
-    "longitude": -48.2
-  },
-  {
-    "id": "medica4",
-    "icon": "＋",
-    "color": "green",
-    "title": "Emergência médica (simulação)",
-    "address": "Cruzeiro, DF",
-    "time": "1 h",
-    "latitude": -15.791,
-    "longitude": -47.94
-  },
-  {
-    "id": "colisao2",
-    "icon": "!",
-    "color": "red",
-    "title": "Colisão de veículos (simulação)",
-    "address": "Park Way, DF",
-    "time": "1 h 5 min",
-    "latitude": -15.901,
-    "longitude": -47.965
-  },
-  {
-    "id": "alagamento4",
-    "icon": "!",
-    "color": "red",
-    "title": "Alagamento (simulação)",
-    "address": "Jardim Botânico, DF",
-    "time": "1 h 10 min",
-    "latitude": -15.87,
-    "longitude": -47.8
-  }
-];
-const pages = {
-  emergency: "canais-emergencia.html",
-  login: "index.html", signup: "cadastro.html", forgot: "recuperar-senha.html",
-  map: "mapa.html", sos: "socorro.html", samu: "samu.html", chat: "chatbot.html",
-  faq: "duvidas-frequentes.html", settings: "configuracoes.html",
-  profile: "perfil.html", permissions: "permissoes.html", accessibility: "acessibilidade.html"
-};
-const faqs = [
-  ["Como funciona o Alertaê?", "Este é um protótipo local. Os alertas são fictícios e não são atualizados em tempo real."],
-  ["Como denunciar uma situação de risco?", "Este protótipo não envia denúncias. Utilize os canais oficiais de atendimento da sua região."],
-  ["Quais são os pontos de risco na minha região?", "O mapa contém apenas exemplos fictícios em Brasília e outras regiões do Distrito Federal. Não use esses marcadores para avaliar riscos reais."],
-  ["O SOS aciona uma central?", "Não. O SOS é uma simulação e não envia mensagens nem compartilha sua localização com uma central."],
-  ["Como funciona a localização?", "Ao abrir o mapa, o navegador solicita sua autorização para centralizar na sua localização atual. O botão de centralizar permite atualizar a posição. A posição é usada apenas no mapa desta página."],
-  ["Como recuperar minha senha?", "Não há contas reais neste protótipo. A recuperação de senha é apenas demonstrativa e não envia e-mails."]
-];
 let toastTimer;
 let modalReturnFocus;
 
@@ -389,7 +124,7 @@ function renderSettings() {
   const styleSelect = document.querySelector("[data-default-map-style]");
   let style;
   try { style = localStorage.getItem(MAP_STYLE_KEY); } catch { /* Usa o estilo padrão. */ }
-  if (styleSelect) styleSelect.value = Object.prototype.hasOwnProperty.call(mapStyles, style) ? style : "claro";
+  if (styleSelect) styleSelect.value = Object.hasOwn(mapStyles, style) ? style : "claro";
   const autoLocation = document.querySelector("[data-auto-location]");
   if (autoLocation) autoLocation.checked = readStored("alertae-map-preferences").autoLocation !== false;
 }
@@ -503,7 +238,7 @@ function initializeApplication() {
   document.addEventListener("change", event => {
     const input = event.target;
     if (input.hasAttribute("data-default-map-style")) {
-      if (!Object.prototype.hasOwnProperty.call(mapStyles, input.value)) return;
+      if (!Object.hasOwn(mapStyles, input.value)) return;
       try {
         localStorage.setItem(MAP_STYLE_KEY, input.value);
         showToast("Estilo do mapa salvo. Será aplicado ao abrir o mapa.");
@@ -686,7 +421,7 @@ let hybridLabelsLayer = null;
 ======================================== */
 
 function changeMapStyle(style) {
-  if (!mapInstance || !Object.prototype.hasOwnProperty.call(mapStyles, style)) {
+  if (!mapInstance || !Object.hasOwn(mapStyles, style)) {
     return;
   }
 
@@ -733,16 +468,10 @@ function changeMapStyle(style) {
       const isSelected =
         button.dataset.mapStyle === style;
 
-      button.setAttribute(
-        "aria-pressed",
-        String(isSelected)
-      );
+      button.setAttribute("aria-pressed", String(isSelected));
+      button.classList.toggle("selected", isSelected);
 
-      button.style.background =
-        isSelected ? "#dbeafe" : "#ffffff";
-
-      button.style.color =
-        isSelected ? "#1d4ed8" : "#334155";
+      button.classList.toggle("selected", isSelected);
     });
 }
 
@@ -763,18 +492,10 @@ function addMapStyleControl() {
       "leaflet-bar alertae-map-styles"
     );
 
-    container.style.cssText = `
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 3px 14px #15213720;
-      padding: 4px;
-      max-width: 185px;
-      font-family: inherit;
-      font-size: 12px;
-    `;
-
+    
     // Botão principal
     const toggle = document.createElement("button");
+    toggle.className = "map-style-toggle";
 
     toggle.type = "button";
     toggle.textContent = "☷ Camadas";
@@ -789,56 +510,29 @@ function addMapStyleControl() {
       "false"
     );
 
-    toggle.style.cssText = `
-      display: block;
-      width: 100%;
-      border: 0;
-      background: #ffffff;
-      color: #1e293b;
-      padding: 9px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 700;
-      text-align: left;
-    `;
-
+    
     // Painel das opções
     const options = document.createElement("div");
+    options.className = "map-style-options";
 
     options.hidden = true;
 
-    options.style.cssText = `
-      padding-top: 5px;
-      display: none;
-    `;
-
+    
     // Cria os quatro botões
     Object.entries(mapStyles).forEach(
       ([key, value]) => {
         const button = document.createElement("button");
 
         button.type = "button";
+        button.className = "map-style-option";
         button.dataset.mapStyle = key;
         button.textContent = value.name;
 
-        button.style.cssText = `
-          display: block;
-          width: 100%;
-          border: 0;
-          border-radius: 7px;
-          padding: 9px 12px;
-          text-align: left;
-          cursor: pointer;
-          margin-top: 3px;
-          background: #ffffff;
-          color: #334155;
-        `;
-
+        
         button.addEventListener("click", () => {
           changeMapStyle(key);
 
           options.hidden = true;
-          options.style.display = "none";
 
           toggle.setAttribute(
             "aria-expanded",
@@ -859,9 +553,6 @@ function addMapStyleControl() {
       const opening = options.hidden;
 
       options.hidden = !opening;
-
-      options.style.display =
-        opening ? "block" : "none";
 
       toggle.setAttribute(
         "aria-expanded",
@@ -910,7 +601,7 @@ function initializeMap() {
   try { savedStyle = localStorage.getItem(MAP_STYLE_KEY); } catch { /* Usa o estilo padrão. */ }
 
   const initialStyle =
-    Object.prototype.hasOwnProperty.call(mapStyles, savedStyle) ? savedStyle : "claro";
+    Object.hasOwn(mapStyles, savedStyle) ? savedStyle : "claro";
 
   // Aplica o estilo
   changeMapStyle(initialStyle);
@@ -930,16 +621,10 @@ function initializeMap() {
       const isSelected =
         button.dataset.mapStyle === initialStyle;
 
-      button.setAttribute(
-        "aria-pressed",
-        String(isSelected)
-      );
+      button.setAttribute("aria-pressed", String(isSelected));
+      button.classList.toggle("selected", isSelected);
 
-      button.style.background =
-        isSelected ? "#dbeafe" : "#ffffff";
-
-      button.style.color =
-        isSelected ? "#1d4ed8" : "#334155";
+      button.classList.toggle("selected", isSelected);
     });
 
   /* ========================================
@@ -1058,11 +743,3 @@ if (document.readyState === "loading") {
 } else {
   initializeApplication();
 }
-
-
-
-
-
-
-
-

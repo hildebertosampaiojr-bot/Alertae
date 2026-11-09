@@ -24,8 +24,18 @@
 .leaflet-bottom.leaflet-right{right:auto;bottom:calc(102px + env(safe-area-inset-bottom));left:0;max-width:calc(100% - 68px)}.leaflet-control-attribution{font-size:8px!important;line-height:1.4!important;background:#ffffffe6!important}.leaflet-popup-content{font-family:inherit;font-size:12px;line-height:1.5}
 .map-screen:has(.map-sheet:not([hidden])) .locate-button{visibility:hidden}
 .device:has(.map-screen.active)>.toast{bottom:calc(174px + env(safe-area-inset-bottom));right:14px;left:14px;border-radius:12px;background:#202c3bf2;pointer-events:none}
-@media(min-width:600px){.map-screen{inset:54px 0 0}}
-@media(max-width:360px){.map-controls{right:10px;left:10px;padding:9px 6px}.map-sheet{right:10px;left:10px}.map-topbar{padding:0 14px}}
+
+/* Controle de camadas: estilos ficam no CSS, não no JavaScript. */
+.alertae-map-styles{max-width:185px;border:0!important;border-radius:12px!important;padding:4px;background:#fff;box-shadow:0 3px 14px #15213720!important;font-family:inherit;font-size:12px}
+.map-style-toggle,.map-style-option{display:block;width:100%;border:0;background:#fff;color:#334155;text-align:left;cursor:pointer}
+.map-style-toggle{border-radius:8px;padding:9px 12px;color:#1e293b;font-weight:700}
+.map-style-options{padding-top:5px}.map-style-options[hidden]{display:none}
+.map-style-option{margin-top:3px;border-radius:7px;padding:9px 12px}
+.map-style-option:hover,.map-style-option:focus-visible{background:#eff6ff}
+.map-style-option.selected,.map-style-option[aria-pressed=true]{background:#dbeafe;color:#1d4ed8}
 
 /* O filtro escuro afeta somente as imagens das ruas. */
 .alertae-dark-tiles .leaflet-tile{filter:invert(100%) hue-rotate(180deg) brightness(.9) contrast(.9)}
+
+@media(min-width:600px){.map-screen{inset:54px 0 0}}
+@media(max-width:360px){.map-controls{right:10px;left:10px;padding:9px 6px}.map-sheet{right:10px;left:10px}.map-topbar{padding:0 14px}}

@@ -1,11 +1,9 @@
-﻿"""Servidor local para o protótipo Alertaê."""
+"""Servidor local para o protótipo Alertaê."""
 
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent
-
 
 class FrontendHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -19,7 +17,6 @@ class FrontendHandler(SimpleHTTPRequestHandler):
             return
 
         super().do_GET()
-
 
 if __name__ == "__main__":
     address = ("127.0.0.1", 8000)

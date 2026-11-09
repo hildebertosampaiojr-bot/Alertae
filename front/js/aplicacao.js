@@ -4,7 +4,6 @@ let faqs;
 let occurrences;
 let pages;
 
-
 /* ========================================
    MAPA E GEOLOCALIZAÇÃO AUTOMÁTICA
 ======================================== */
@@ -23,12 +22,13 @@ function readStored(key, fallback = {}) {
   try {
     const value = JSON.parse(localStorage.getItem(key));
     return value && typeof value === "object" && !Array.isArray(value) ? value : fallback;
-  } catch { return fallback; }
+  }
+catch { return fallback; }
 }
 
 function saveStored(key, value) {
   try { localStorage.setItem(key, JSON.stringify(value)); return true; }
-  catch { showToast("O navegador não permitiu salvar os dados neste aparelho."); return false; }
+catch { showToast("O navegador não permitiu salvar os dados neste aparelho."); return false; }
 }
 
 function showToast(message) {
@@ -125,7 +125,8 @@ function renderSettings() {
   document.getElementById("settings-avatar").textContent = name === "Seu perfil" ? "A" : [...name][0].toUpperCase();
   const styleSelect = document.querySelector("[data-default-map-style]");
   let style;
-  try { style = localStorage.getItem(MAP_STYLE_KEY); } catch { /* Usa o estilo padrão. */ }
+  try { style = localStorage.getItem(MAP_STYLE_KEY); }
+catch { /* Usa o estilo padrão. */ }
   if (styleSelect) styleSelect.value = Object.hasOwn(mapStyles, style) ? style : "claro";
   const autoLocation = document.querySelector("[data-auto-location]");
   if (autoLocation) autoLocation.checked = readStored("alertae-map-preferences").autoLocation !== false;
@@ -161,7 +162,8 @@ function setModalOpen(open) {
   if (open) {
     modalReturnFocus = document.activeElement;
     backdrop.querySelector("[data-close-modal]")?.focus();
-  } else modalReturnFocus?.focus();
+  }
+else modalReturnFocus?.focus();
 }
 
 function applyPreferences() {
@@ -251,7 +253,8 @@ async function initializeApplication() {
       try {
         localStorage.setItem(MAP_STYLE_KEY, input.value);
         showToast("Estilo do mapa salvo. Será aplicado ao abrir o mapa.");
-      } catch { showToast("Não foi possível salvar o estilo neste navegador."); }
+      }
+catch { showToast("Não foi possível salvar o estilo neste navegador."); }
       return;
     }
     if (input.hasAttribute("data-auto-location")) {
@@ -307,7 +310,7 @@ async function initializeApplication() {
       const buttons = [...backdrop.querySelectorAll("button")];
       const first = buttons[0], last = buttons[buttons.length - 1];
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
   });
   const handle = document.querySelector(".sheet-handle");
@@ -468,7 +471,7 @@ function changeMapStyle(style) {
 
   // Salva a preferência do usuário
   try { localStorage.setItem(MAP_STYLE_KEY, style); }
-  catch { showToast("Estilo aplicado sem salvar a preferência neste navegador."); }
+catch { showToast("Estilo aplicado sem salvar a preferência neste navegador."); }
 
   // Atualiza os botões do seletor
   document
@@ -501,7 +504,6 @@ function addMapStyleControl() {
       "leaflet-bar alertae-map-styles"
     );
 
-    
     // Botão principal
     const toggle = document.createElement("button");
     toggle.className = "map-style-toggle";
@@ -519,14 +521,12 @@ function addMapStyleControl() {
       "false"
     );
 
-    
     // Painel das opções
     const options = document.createElement("div");
     options.className = "map-style-options";
 
     options.hidden = true;
 
-    
     // Cria os quatro botões
     Object.entries(mapStyles).forEach(
       ([key, value]) => {
@@ -537,7 +537,6 @@ function addMapStyleControl() {
         button.dataset.mapStyle = key;
         button.textContent = value.name;
 
-        
         button.addEventListener("click", () => {
           changeMapStyle(key);
 
@@ -607,7 +606,8 @@ function initializeMap() {
 
   // Recupera o último estilo escolhido
   let savedStyle;
-  try { savedStyle = localStorage.getItem(MAP_STYLE_KEY); } catch { /* Usa o estilo padrão. */ }
+  try { savedStyle = localStorage.getItem(MAP_STYLE_KEY); }
+catch { /* Usa o estilo padrão. */ }
 
   const initialStyle =
     Object.hasOwn(mapStyles, savedStyle) ? savedStyle : "claro";
@@ -714,7 +714,8 @@ function centerOnUser() {
         )
           .addTo(mapInstance)
           .bindPopup("Você está aqui");
-      } else {
+      }
+else {
         userLocationMarker.setLatLng(point);
       }
 
@@ -749,6 +750,7 @@ function centerOnUser() {
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initializeApplication, { once: true });
-} else {
+}
+else {
   initializeApplication();
 }

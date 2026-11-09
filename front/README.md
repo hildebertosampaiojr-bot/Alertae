@@ -1,32 +1,39 @@
-﻿# Alertaê
+# Alertaê — front-end
 
 Protótipo de interface para alertas comunitários, ocorrências e canais de emergência.
 
 ## Como executar
 
-Abra um terminal nesta pasta e inicie o servidor local:
-
 ```powershell
 py servidor.py
 ```
 
-Acesse <http://127.0.0.1:8000>. Para encerrar, pressione `Ctrl+C`.
+Acesse `http://127.0.0.1:8000`. Para encerrar, pressione `Ctrl+C`.
 
-## Arquivos
+## Organização
 
-- `html/`: páginas `index.html`, `cadastro.html`, `mapa.html`, `socorro.html`, `samu.html`, `chatbot.html`, `duvidas-frequentes.html`, `configuracoes.html`, `acessibilidade.html`, `perfil.html`, `permissoes.html` e `recuperar-senha.html`.
-- `css/base.css`: estilos globais e compartilhados. `css/preferencias-compartilhadas.css`: base visual das telas de preferências.
-- `css/`: estilos de `login`, `cadastro`, `mapa`, `socorro`, `samu`, `chatbot`, `duvidas-frequentes`, `configuracoes` e `recuperar-senha`.
-- `js/aplicacao.js`: navegação e interações.
+- `html/`: telas do protótipo.
+- `css/base.css`: tokens e estilos globais compartilhados.
+- `css/preferencias-compartilhadas.css`: base visual das telas de preferências.
+- `css/*.css`: estilos específicos de cada tela.
+- `js/aplicacao.js`: inicialização da aplicação, eventos, armazenamento local, acessibilidade, mapa e geolocalização.
+- `js/dados.js`: rotas, FAQ e ocorrências fictícias usadas pelo protótipo.
 - `servidor.py`: servidor HTTP local, sem dependências externas.
 
-Login, cadastro, ocorrências, chatbot e pedido de SOS são demonstrações locais, sem autenticação real, banco de dados, envio de e-mail ou acionamento de uma central. Utilize dados fictícios. Senhas não são armazenadas; o perfil e as preferências ficam apenas no armazenamento deste navegador.
+## Limites do protótipo
 
-O mapa usa o Leaflet e provedores externos de imagens, portanto depende de conexão com a internet. As 25 ocorrências são exemplos fictícios em Brasília e outras regiões do Distrito Federal. Ao abrir o mapa, ele solicita a localização atual ao navegador, mediante autorização, e centraliza nessa posição. O botão de centralizar permite buscar a posição novamente, sem reutilizar posições em cache. Se a localização não estiver disponível, o mapa mantém a visão geral do Brasil e informa o motivo. A preferência de localização pode ser desativada em Configurações > Permissões.
+Login, cadastro, ocorrências, chatbot e pedido de SOS são demonstrações locais. Não existe autenticação real, banco de dados, envio de e-mail ou acionamento de uma central. Utilize dados fictícios. Senhas não são armazenadas; perfil e preferências ficam apenas no armazenamento do navegador.
 
-As telas incluem navegação, validação de confirmação de senha, busca nas dúvidas frequentes, respostas locais do assistente, preferências de acessibilidade e simulação de SOS com controle de foco por teclado.
+O mapa usa Leaflet e provedores externos de imagens, portanto depende de internet. As 25 ocorrências são exemplos fictícios no Distrito Federal. A localização atual só é solicitada mediante autorização do navegador e é usada para centralizar o mapa desta página.
 
-Configurações reúne o resumo do perfil, permissões, acessibilidade, ajuda e canais de emergência. Em “Seu mapa”, é possível escolher o estilo padrão e desativar a centralização automática ao abrir; o botão de localização continua disponível para buscar a posição manualmente. As preferências são persistidas neste navegador. A seção de privacidade explica o armazenamento local e os limites do protótipo.
+As camadas Claro e Escuro usam OpenStreetMap; Satélite e Híbrido usam Esri. Os créditos dos provedores devem permanecer visíveis.
 
-As camadas Claro e Escuro usam imagens do OpenStreetMap; a opção Escuro aplica um filtro visual apenas nessas imagens. Satélite e Híbrido usam Esri. As camadas atuais não usam CARTO nem exigem chave CARTO. Mantenha os créditos visíveis e respeite a política do provedor: https://operations.osmfoundation.org/policies/tiles/.
+## Desenvolvimento
 
+Ao alterar o projeto:
+
+1. preserve o caráter demonstrativo dos dados e fluxos;
+2. mantenha regras de interface fora do HTML sempre que possível;
+3. prefira classes CSS a estilos inline criados por JavaScript;
+4. mantenha dados fictícios separados da lógica de interação;
+5. valide navegação, acessibilidade e sintaxe JavaScript antes de publicar.
